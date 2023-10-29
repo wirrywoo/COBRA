@@ -1,1 +1,38 @@
-variant 2
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+</head>
+<body>
+
+  <p>
+    Looking to enhance the developer experience using artificial intelligence or machine learning
+    in conjunction with Docker technologies?
+  </p>
+
+  <p>
+    Introducing...
+  </p>
+
+  <img src="{% static '/img/logo2.png' %}" width="500" height="500">
+
+
+  <p class="bottom-three">
+    Enter our competition and showcase your solution for a chance to win up to <b>$20,000</b> in prizes. Sign up today!
+  </p>
+
+  <button id="myButton" class="button-59" role="button">Sign me up!</button>
+
+  <script type="text/javascript">
+      document.getElementById("myButton").onclick = function () {
+          location.href = "https://docker.devpost.com/";
+      };
+  </script>
+
+</body>
+</html>

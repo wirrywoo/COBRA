@@ -1,0 +1,65 @@
+body {
+    font-family: 'Comfortaa', sans-serif;
+    text-align: center;
+    background-color: #00084d;
+    font-size: 24px;
+    color: white;
+    font-style: bold;
+    margin:0;
+    padding-left:100px;
+    padding-right:100px;
+    padding-top:50px;
+  }
+
+  .bottom-three {
+    margin-bottom: 3cm;
+  }
+
+  .button-59 {
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid white;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    fill: white;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .button-59:focus {
+    color: #171e29;
+  }
+
+  .button-59:hover {
+    border-color: #06f;
+    color: #06f;
+    fill: #06f;
+  }
+
+  .button-59:active {
+    border-color: #06f;
+    color: #06f;
+    fill: #06f;
+  }
+
+  @media (min-width: 768px) {
+    .button-59 {
+      min-width: 170px;
+    }
+  }

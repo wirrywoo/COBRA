@@ -3,7 +3,7 @@ services:
   web1:
     build:
       context: ./django/
-    command: gunicorn demo.wsgi:application --bind 0.0.0.0:8000
+    command: sh -c "python manage.py collectstatic --no-input && gunicorn demo.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./django/:/usr/src/app/
       - static_files:/usr/src/app/staticfiles
@@ -15,7 +15,7 @@ services:
   web2:
     build:
       context: ./django2/
-    command: gunicorn demo.wsgi:application --bind 0.0.0.0:8080
+    command: sh -c "python manage.py collectstatic --no-input && gunicorn demo.wsgi:application --bind 0.0.0.0:8080"
     volumes:
       - ./django2/:/usr/src/app/
       - static_files:/usr/src/app/staticfiles
