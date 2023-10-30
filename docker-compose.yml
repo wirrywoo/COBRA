@@ -3,7 +3,7 @@ services:
   web-control:
     build:
       context: ./app-control/
-    command: sh -c "python manage.py collectstatic --no-input && gunicorn demo.wsgi:application --bind 0.0.0.0:8000"
+    command: sh -c "python manage.py collectstatic --no-input && gunicorn python.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./app-control/:/usr/src/app/
       - static_files:/usr/src/app/staticfiles
@@ -15,7 +15,7 @@ services:
   web-treatment:
     build:
       context: ./app-treatment/
-    command: sh -c "python manage.py collectstatic --no-input && gunicorn demo.wsgi:application --bind 0.0.0.0:8080"
+    command: sh -c "python manage.py collectstatic --no-input && gunicorn python.wsgi:application --bind 0.0.0.0:8080"
     volumes:
       - ./app-treatment/:/usr/src/app/
       - static_files:/usr/src/app/staticfiles
