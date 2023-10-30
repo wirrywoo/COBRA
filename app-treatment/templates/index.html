@@ -28,10 +28,36 @@
 
   <button id="myButton" class="button-59" role="button">Sign me up!</button>
 
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script type="text/javascript">
+      
       document.getElementById("myButton").onclick = function () {
-          location.href = "https://docker.devpost.com/";
+        location.href = "https://docker.devpost.com/";
       };
+
+      $('#myButton').click(function(event) {
+          event.preventDefault();
+          $.ajax({
+              type: 'POST',
+              url: '/treatment-response/',
+              data: {'clicked': true, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
+          });
+      });
+
+
+      $(window).on('unload', function() {
+          // You can send an ArrayBufferView, Blob, DOMString or FormData
+          // Since Content-Type of FormData is multipart/form-data, the Content-Type of the HTTP request will also be multipart/form-data
+          var fd = new FormData();
+          fd.append('clicked', false);
+          fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+          navigator.sendBeacon('/treatment-response/', fd);
+      });
+      
+
+      
+
+
   </script>
 
 </body>
