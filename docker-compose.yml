@@ -6,7 +6,7 @@ services:
     command: sh -c "python manage.py collectstatic --no-input && gunicorn python.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./app-control/:/usr/src/app/
-      - static_files:/usr/src/app/staticfiles
+      - static_files:/usr/src/app/static
     expose:
      - 8000
     env_file:
@@ -18,7 +18,7 @@ services:
     command: sh -c "python manage.py collectstatic --no-input && gunicorn python.wsgi:application --bind 0.0.0.0:8080"
     volumes:
       - ./app-treatment/:/usr/src/app/
-      - static_files:/usr/src/app/staticfiles
+      - static_files:/usr/src/app/static
     expose:
      - 8080
     env_file:
@@ -33,7 +33,7 @@ services:
       - 80:80
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
-      - static_files:/home/app/staticfiles
+      - static_files:/home/app/static
       - ./nginx/v1/:/home/html/v1/
       - ./nginx/v2/:/home/html/v2/
 
