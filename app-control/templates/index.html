@@ -21,7 +21,6 @@
 
   <img src="{% static '/img/logo.png' %}" width="500" height="500">
 
-
   <p class="bottom-three">
     Enter our competition and showcase your solution for a chance to win up to <b>$20,000</b> in prizes. Sign up today!
   </p>
@@ -29,35 +28,26 @@
   <button id="myButton" class="button-59" role="button">Sign me up!</button>
 
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script type="text/javascript">
-      
-      document.getElementById("myButton").onclick = function () {
+  <script>
+    document.getElementById("myButton").onclick = function () {
         location.href = "https://docker.devpost.com/";
-      };
+    };
 
-      $('#myButton').click(function(event) {
-          event.preventDefault();
-          $.ajax({
-              type: 'POST',
-              url: '/control-response/',
-              data: {'clicked': true, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
-          });
-      });
+    $('#myButton').click(function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/control-response/',
+            data: {'clicked': true, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
+        });
+    });
 
-
-      $(window).on('unload', function() {
-          // You can send an ArrayBufferView, Blob, DOMString or FormData
-          // Since Content-Type of FormData is multipart/form-data, the Content-Type of the HTTP request will also be multipart/form-data
-          var fd = new FormData();
-          fd.append('clicked', false);
-          fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-          navigator.sendBeacon('/control-response/', fd);
-      });
-      
-
-      
-
-
+    $(window).on('unload', function() {
+        var fd = new FormData();
+        fd.append('clicked', false);
+        fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        navigator.sendBeacon('/control-response/', fd);
+    });
   </script>
 
 </body>
