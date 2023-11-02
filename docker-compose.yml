@@ -3,26 +3,32 @@ services:
   web-control:
     build:
       context: ./app-control/
+      dockerfile: Dockerfile
+      args:
+        WANDB_API_KEY: $WANDB_API_KEY
     command: sh -c "python manage.py collectstatic --no-input && gunicorn python.wsgi:application --bind 0.0.0.0:8000"
     volumes:
-      - ./app-control/:/usr/src/app/
-      - static_files:/usr/src/app/static
+      - ./app-control/:/usr/src/app-control/
+      - static_files:/usr/src/app-control/static
     expose:
      - 8000
     env_file:
-      - ./.env/dev.env
+      - .env
 
   web-treatment:
     build:
       context: ./app-treatment/
+      dockerfile: Dockerfile
+      args:
+        WANDB_API_KEY: $WANDB_API_KEY
     command: sh -c "python manage.py collectstatic --no-input && gunicorn python.wsgi:application --bind 0.0.0.0:8080"
     volumes:
-      - ./app-treatment/:/usr/src/app/
-      - static_files:/usr/src/app/static
+      - ./app-treatment/:/usr/src/app-treatment/
+      - static_files:/usr/src/app-treatment/static
     expose:
      - 8080
     env_file:
-      - ./.env/dev.env
+      - .env
 
   nginx:
     build:
@@ -34,8 +40,6 @@ services:
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - static_files:/home/app/static
-      - ./nginx/v1/:/home/html/v1/
-      - ./nginx/v2/:/home/html/v2/
 
   # dns:
   #   build:
@@ -51,4 +55,3 @@ services:
 
 volumes:
   static_files:
-

@@ -33,21 +33,26 @@
         location.href = "https://docker.devpost.com/";
       };
   
-    $('#myButton').click(function(event) {
+    $('#myButton').on("mousedown", function(event) {
         event.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '/treatment-response/',
-            data: {'clicked': true, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
-        });
+        let data = new FormData();
+        data.append('clicked', true);
+        data.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        navigator.sendBeacon("/treatment-response/", data);
     });
-  
-    $(window).on('unload', function() {
-        var fd = new FormData();
-        fd.append('clicked', false);
-        fd.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-        navigator.sendBeacon('/treatment-response/', fd);
-    });
+
+    function logData(event) {
+      event.preventDefault();
+      let data = new FormData();
+      data.append('clicked', false);
+      data.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+      navigator.sendBeacon("/treatment-response/", data);
+    }
+
+    window.addEventListener("unload", logData, false);
+
+
+
   </script>
 
 </body>

@@ -1,23 +1,27 @@
 from django.shortcuts import HttpResponse
+import wandb
 
 cache = {}
-
-def is_ajax(request): # If clicked by the button
-    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest' 
+version = 'control'
+counter = {
+    'sum_rewards': 0,
+    'num_observations': 0
+}
 
 def clicked(request):
-    if request.META.get('PATH_INFO') == '/control-response/':
-        version = 'control'
-    elif request.META.get('PATH_INFO') == '/treatment-response/':
-        version = 'treatment'
-    else:
-        version = None
+
     uri = request.META.get('HTTP_REFERER')
-    if is_ajax(request):
-        reward = 1 if request.POST.get('clicked') else 0
-    else:
-        reward = 0
-    if uri not in cache.keys():
-        cache[uri] = {'version': version, 'reward': reward}
-        print(f"URI: {uri}; Version: {version}; Reward: {reward}")
+
+    reward = 1 if request.POST.get('clicked') == 'true' else 0
+
+    if isinstance(reward, int) and uri not in cache.keys():
+
+        counter['sum_rewards'] += reward
+        counter['num_observations'] += 1
+
+        avg_reward = counter['sum_rewards'] / counter['num_observations']
+        cache[uri] = {'version': version, 'avg_reward': avg_reward}
+        wandb.init(project = 'cobe-platform', name = version, resume = True)
+        wandb.log({"version": version, "avg_reward": avg_reward})
+        print(f"URI: {uri}; Version: {version}; Average Reward: {avg_reward}")
     return HttpResponse(reward)
