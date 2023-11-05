@@ -39,6 +39,12 @@
         data.append('clicked', true);
         data.append('csrfmiddlewaretoken', '{{ csrf_token }}');
         navigator.sendBeacon("/treatment-response/", data);
+
+        let test = new FormData();
+        test.append('clicked', true);
+        test.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        navigator.sendBeacon("/update-probabilities/", test);
+
     });
 
     function logData(event) {
@@ -47,6 +53,11 @@
       data.append('clicked', false);
       data.append('csrfmiddlewaretoken', '{{ csrf_token }}');
       navigator.sendBeacon("/treatment-response/", data);
+
+      let test = new FormData();
+      test.append('clicked', true);
+      test.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+      navigator.sendBeacon("/update-probabilities/", test);
     }
 
     window.addEventListener("unload", logData, false);

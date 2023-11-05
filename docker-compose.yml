@@ -10,7 +10,6 @@ services:
     volumes:
       - ./app-control/:/usr/src/app-control/
       - static_files:/usr/src/app-control/static
-      - nginx_config:/usr/src/app-control/config
     expose:
      - 8000
     env_file:
@@ -26,7 +25,6 @@ services:
     volumes:
       - ./app-treatment/:/usr/src/app-treatment/
       - static_files:/usr/src/app-treatment/static
-      - nginx_config:/usr/src/app-treatment/config
     expose:
      - 8080
     env_file:
@@ -40,9 +38,23 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - nginx_config:/etc/nginx/
       - static_files:/home/app/static
-      - nginx_config:/etc/nginx/conf.d/
+
+  contextual:
+    build:
+      context: ./contextual/
+      dockerfile: Dockerfile
+      args:
+        WANDB_API_KEY: $WANDB_API_KEY
+    command: sh -c "gunicorn python.wsgi:application --bind 0.0.0.0:8888"
+    volumes:
+      - ./contextual/:/usr/src/contextual/
+      - nginx_config:/usr/src/contextual/config
+    expose:
+     - 8888
+    env_file:
+      - .env
 
   # dns:
   #   build:

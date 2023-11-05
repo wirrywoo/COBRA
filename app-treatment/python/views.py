@@ -1,8 +1,8 @@
 from django.shortcuts import HttpResponse
 import wandb
 
-from sklearn.linear_model import LogisticRegression
-from contextualbandits.online import EpsilonGreedy
+# from sklearn.linear_model import LogisticRegression
+# from contextualbandits.online import EpsilonGreedy
 
 cache = {}
 version = 'treatment'
