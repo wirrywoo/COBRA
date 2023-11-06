@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from contextualbandits.online import EpsilonGreedy
 
 
-def update_probs(request):
+def update_policy(request):
 
     print(request.META)
     print(request.POST)

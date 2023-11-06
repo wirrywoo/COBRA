@@ -14,5 +14,5 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'python.settings')
 
-# wandb.init(project = 'cobe-platform', name = 'contextual', anonymous="allow")
+# wandb.init(project = 'cobe-platform', name = 'policy-learner', anonymous="allow")
 application = get_wsgi_application()

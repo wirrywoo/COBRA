@@ -7,5 +7,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cobe-platform-demo/', TemplateView.as_view(template_name="index.html")),
-    path('control-response/', views.clicked)
+    path('log-control-response/', views.log_response)
 ] + staticfiles_urlpatterns()

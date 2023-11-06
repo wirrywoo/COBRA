@@ -1,2 +1,2 @@
-app-control/wandb
-app-treatment/wandb
+*/wandb/
+*/python/__pycache__/

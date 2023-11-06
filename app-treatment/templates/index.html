@@ -35,32 +35,32 @@
   
     $('#myButton').on("mousedown", function(event) {
         event.preventDefault();
-        let data = new FormData();
-        data.append('clicked', true);
-        data.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-        navigator.sendBeacon("/treatment-response/", data);
+        let response = new FormData();
+        response.append('clicked', true);
+        response.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        navigator.sendBeacon("/log-treatment-response/", response);
 
-        let test = new FormData();
-        test.append('clicked', true);
-        test.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-        navigator.sendBeacon("/update-probabilities/", test);
+        let probability = new FormData();
+        probability.append('clicked', true);
+        probability.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        navigator.sendBeacon("/update-policy/", probability);
 
     });
 
-    function logData(event) {
+    function noClickResponse(event) {
       event.preventDefault();
-      let data = new FormData();
-      data.append('clicked', false);
-      data.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-      navigator.sendBeacon("/treatment-response/", data);
+      let response = new FormData();
+      response.append('clicked', false);
+      response.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+      navigator.sendBeacon("/log-treatment-response/", response);
 
-      let test = new FormData();
-      test.append('clicked', true);
-      test.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-      navigator.sendBeacon("/update-probabilities/", test);
+      let probability = new FormData();
+      probability.append('clicked', true);
+      probability.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+      navigator.sendBeacon("/update-policy/", probability);
     }
 
-    window.addEventListener("unload", logData, false);
+    window.addEventListener("unload", noClickResponse, false);
 
 
 

@@ -11,7 +11,7 @@ counter = {
     'num_observations': 0
 }
 
-def clicked(request):
+def log_response(request):
 
     uri = request.META.get('HTTP_REFERER')
 
