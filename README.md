@@ -31,22 +31,22 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="240" height="160">
   </a>
 
 <h3 align="center">The Containerized Online Bandit Experimentation (COBE) Platform</h3>
 
   <p align="center">
-    A containerized experimentation platform built to monitor the performance of multi-armed bandit experiments and learn online policies aimed to maximize click through rates and user engagement. Submitted by Wilson Cheung for Docker AI/ML Hackathon 2023.
+    A containerized experimentation platform built to monitor the performance of multi-armed bandit experiments and learn online policies aimed to maximize click through rates and user engagement. Submitted as a minimum viable product for <a href="https://docker.devpost.com/">2023 Docker AI/ML Hackathon</a>.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/wirrywoo/cobe-platform/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/github_username/repo_name">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/wirrywoo/cobe-platform/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/wirrywoo/cobe-platform/issues">Request Feature</a>
   </p>
 </div>
 
@@ -216,18 +216,18 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[contributors-shield]: https://img.shields.io/github/contributors/wirrywoo/cobe-platform.svg
+[contributors-url]: https://github.com/wirrywoo/cobe-platform/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wirrywoo/cobe-platform.svg
+[forks-url]: https://github.com/wirrywoo/cobe-platform/network/members
+[stars-shield]: https://img.shields.io/github/stars/wirrywoo/cobe-platform.svg
+[stars-url]: https://github.com/wirrywoo/cobe-platform/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wirrywoo/cobe-platform.svg
+[issues-url]: https://github.com/wirrywoo/cobe-platform/issues
+[license-shield]: https://img.shields.io/github/license/wirrywoo/cobe-platform
+[license-url]: https://github.com/wirrywoo/cobe-platform/blob/main/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/wcheung-in/
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
@@ -245,3 +245,4 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+
