@@ -83,6 +83,28 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+Shown below is a high-level diagram that visualizes the technical architecture of the COBE Platform in its current state.
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    [*] --> LoadBalancer
+
+    state CobePlatform {
+        direction LR
+        LoadBalancer --> WebControl
+        LoadBalancer --> WebTreatment
+        WebControl --> WandB
+        WebTreatment --> WandB
+        WebControl --> PolicyLearner
+        WebTreatment --> PolicyLearner
+        PolicyLearner --> WandB
+        PolicyLearner --> LoadBalancer
+    }
+    WebControl --> [*]
+    WebTreatment --> [*]
+```
+
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
