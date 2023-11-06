@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="240" height="160">
   </a>
 
 <h3 align="center">The Containerized Online Bandit Experimentation (COBE) Platform</h3>
