@@ -14,5 +14,5 @@ import wandb
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'python.settings')
 
-wandb.init(project = 'cobe-platform', name = 'treatment', anonymous="allow")
+wandb.init(project = 'cobe-platform', name = 'treatment', anonymous="must")
 application = get_wsgi_application()
