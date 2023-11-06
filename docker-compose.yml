@@ -37,6 +37,7 @@ services:
     restart: always
     ports:
       - 80:80
+    command: sh -c 'while :; do sleep 1; nginx -s reload; done & nginx -g "daemon off;"'
     volumes:
       - nginx_config:/etc/nginx/
       - static_files:/home/app/static
