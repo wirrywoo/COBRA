@@ -30,19 +30,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/wirrywoo/cobe-platform">
     <img src="images/logo.png" alt="Logo" width="240" height="160">
   </a>
 
 <h3 align="center">The Containerized Online Bandit Experimentation (COBE) Platform</h3>
 
   <p align="center">
-    A containerized experimentation platform built to monitor the performance of multi-armed bandit experiments and learn online policies aimed to maximize click through rates and user engagement. Submitted as a minimum viable product for <a href="https://docker.devpost.com/">2023 Docker AI/ML Hackathon</a>.
-    <br />
+    A containerized experimentation platform built to monitor online controlled experiments learned under contextual bandit policies in real-time. Submitted as a functional minimum viable product for <a href="https://docker.devpost.com/">2023 Docker AI/ML Hackathon</a>.
+<!--     <br />
     <a href="https://github.com/wirrywoo/cobe-platform/"><strong>Explore the docs »</strong></a>
+    <br /> -->
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/wirrywoo/cobe-platform">View Demo</a>
     ·
     <a href="https://github.com/wirrywoo/cobe-platform/issues">Report Bug</a>
     ·
@@ -83,9 +84,42 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+Shown below is a high-level diagram that visualizes the technical architecture of the COBE Platform in its current state.
+
+```mermaid
+
+stateDiagram
+
+    classDef platform font-family: courier, font-size:16px, fill:transparent, stroke-width:2px
+    classDef container font-family: courier, font-size:12px, fill:transparent
+    classDef actor font-family: courier, font-size:12px
+    classDef none font-family: none, font-size:none
+
+    direction LR
+    Users --> LoadBalancer:::container
+    Dev --> CobePlatform:::platform
+
+    state CobePlatform {
+        direction LR
+        LoadBalancer --> WebControl
+        LoadBalancer --> WebTreatment
+        WebControl --> PolicyLearner
+        WebTreatment --> PolicyLearner
+        PolicyLearner --> LoadBalancer
+    }
+    WebControl:::container --> Users:::actor
+    WebTreatment:::container --> Users
+    Users --> PolicyLearner:::container
+    WebControl --> WandB:::platform
+    WebTreatment --> WandB
+    PolicyLearner --> WandB
+    WandB --> Dev:::actor
+    Dev --> PolicyLearner
+```
+
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `wirrywoo`, `cobe-platform`, `twitter_handle`, `wcheung-in`, `gmail`, `info`, `project_title`, `project_description`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,14 +127,16 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![Python][python-shield]][python-url]
+* [![Docker][docker-shield]][docker-url]
+* [![Django][django-shield]][django-url]
+* [![JQuery][jquery-shield]][jquery-url]
+* [![Gunicorn][gunicorn-shield]][gunicorn-url]
+* [![NGINX][nginx-shield]][nginx-url]
+* [![VowpalWabbit][vw-shield]][vw-url]
+* [![Weights and Biases][wandb-shield]][wandb-url]
+* [![Ubuntu][ubuntu-shield]][ubuntu-url]
+* [![Visual Studio Code][vscode-shield]][vscode-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,7 +161,7 @@ This is an example of how to list things you need to use the software and how to
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/wirrywoo/cobe-platform.git
    ```
 3. Install NPM packages
    ```sh
@@ -152,20 +188,20 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Future State
 
 - [ ] Feature 1
 - [ ] Feature 2
 - [ ] Feature 3
     - [ ] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/wirrywoo/cobe-platform/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- CONTRIBUTING -->
+<!-- CONTRIBUTING 
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -180,6 +216,7 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+-->
 
 
 
@@ -195,9 +232,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Wilson Cheung - [Personal Website](https://wilsoncheung.me/) - info@wilsoncheung.me
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/wirrywoo/cobe-platform](https://github.com/wirrywoo/cobe-platform)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -229,20 +266,25 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/wcheung-in/
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+
+[python-shield]: https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white
+[python-url]: https://www.python.org/
+[jquery-shield]: https://img.shields.io/badge/jQuery-0769AD.svg?style=for-the-badge&logo=jQuery&logoColor=white
+[Jquery-url]: https://jquery.com 
+[django-shield]: https://img.shields.io/badge/Django-092E20.svg?style=for-the-badge&logo=Django&logoColor=white
+[django-url]: https://www.djangoproject.com/
+[gunicorn-shield]: https://img.shields.io/badge/Gunicorn-499848.svg?style=for-the-badge&logo=Gunicorn&logoColor=white
+[gunicorn-url]: https://gunicorn.org/
+[nginx-shield]: https://img.shields.io/badge/NGINX-009639.svg?style=for-the-badge&logo=NGINX&logoColor=white
+[nginx-url]: https://www.nginx.com/
+[vw-shield]: https://img.shields.io/badge/Vowpal%20Wabbit-FF81F9.svg?style=for-the-badge&logo=Vowpal-Wabbit&logoColor=black
+[vw-url]: https://vowpalwabbit.org/
+[wandb-shield]: https://img.shields.io/badge/Weights%20&%20Biases-FFBE00.svg?style=for-the-badge&logo=weightsandbiases&logoColor=black
+[wandb-url]: https://wandb.ai/
+[docker-shield]: https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white
+[docker-url]: https://www.docker.com/
+[ubuntu-shield]: https://img.shields.io/badge/Ubuntu-E95420.svg?style=for-the-badge&logo=Ubuntu&logoColor=white
+[ubuntu-url]: https://ubuntu.com/
+[vscode-shield]: https://img.shields.io/badge/Visual%20Studio%20Code-007ACC.svg?style=for-the-badge&logo=Visual-Studio-Code&logoColor=white
+[vscode-url]: https://code.visualstudio.com/
 
