@@ -88,21 +88,23 @@ Shown below is a high-level diagram that visualizes the technical architecture o
 ```mermaid
 stateDiagram-v2
     direction LR
-    [*] --> LoadBalancer
+    Experimenter --> LoadBalancer
 
     state CobePlatform {
         direction LR
         LoadBalancer --> WebControl
         LoadBalancer --> WebTreatment
-        WebControl --> WandB
-        WebTreatment --> WandB
         WebControl --> PolicyLearner
         WebTreatment --> PolicyLearner
-        PolicyLearner --> WandB
         PolicyLearner --> LoadBalancer
     }
-    WebControl --> [*]
-    WebTreatment --> [*]
+    WebControl --> Users
+    WebTreatment --> Users
+    Users --> PolicyLearner
+    WebControl --> WandB
+    WebTreatment --> WandB
+    PolicyLearner --> WandB
+    WandB --> Experimenter
 ```
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
