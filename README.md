@@ -87,11 +87,16 @@
 Shown below is a high-level diagram that visualizes the technical architecture of the COBE Platform in its current state.
 
 ```mermaid
-stateDiagram-v2
-    direction LR
-    Users --> LoadBalancer
-    Dev --> CobePlatform
 
+stateDiagram
+
+    classDef platform font-family: courier, font-size:16px, fill:transparent, stroke-width:2px
+    classDef container font-family: courier, font-size:12px, fill:transparent
+    classDef actor font-family: courier, font-size:12px
+
+    direction LR
+    Users --> LoadBalancer:::container
+    Dev --> CobePlatform:::platform
 
     state CobePlatform {
         direction LR
@@ -101,13 +106,13 @@ stateDiagram-v2
         WebTreatment --> PolicyLearner
         PolicyLearner --> LoadBalancer
     }
-    WebControl --> Users
-    WebTreatment --> Users
-    Users --> PolicyLearner
-    WebControl --> WandB
+    WebControl:::container --> Users:::actor
+    WebTreatment:::container --> Users
+    Users --> PolicyLearner:::container
+    WebControl --> WandB:::platform
     WebTreatment --> WandB
     PolicyLearner --> WandB
-    WandB --> Dev
+    WandB --> Dev:::actor
     Dev --> PolicyLearner
 ```
 
