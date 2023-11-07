@@ -93,6 +93,7 @@ stateDiagram
     classDef platform font-family: courier, font-size:16px, fill:transparent, stroke-width:2px
     classDef container font-family: courier, font-size:12px, fill:transparent
     classDef actor font-family: courier, font-size:12px
+    classDef none font-family: none, font-size:none
 
     direction LR
     Users --> LoadBalancer:::container
