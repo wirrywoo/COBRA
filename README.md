@@ -37,7 +37,7 @@
 <h3 align="center">The Containerized Online Bandit Experimentation (COBE) Platform</h3>
 
   <p align="center">
-    A containerized experimentation platform built to monitor online controlled experiments under contextual bandit policies in real-time. Submitted as a minimum viable product for <a href="https://docker.devpost.com/">2023 Docker AI/ML Hackathon</a>.
+    A containerized experimentation platform built to monitor online controlled experiments learned under contextual bandit policies in real-time. Submitted as a minimum viable product for <a href="https://docker.devpost.com/">2023 Docker AI/ML Hackathon</a>.
     <br />
     <a href="https://github.com/wirrywoo/cobe-platform/"><strong>Explore the docs »</strong></a>
     <br />
