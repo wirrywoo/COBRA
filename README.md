@@ -89,7 +89,9 @@ Shown below is a high-level diagram that visualizes the technical architecture o
 ```mermaid
 stateDiagram-v2
     direction LR
-    Experimenter --> LoadBalancer
+    Users --> LoadBalancer
+    Dev --> CobePlatform
+
 
     state CobePlatform {
         direction LR
@@ -105,7 +107,8 @@ stateDiagram-v2
     WebControl --> WandB
     WebTreatment --> WandB
     PolicyLearner --> WandB
-    WandB --> Experimenter
+    WandB --> Dev
+    Dev --> PolicyLearner
 ```
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
