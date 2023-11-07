@@ -57,6 +57,7 @@
       let probability = new FormData();
       probability.append('clicked', true);
       probability.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+      probability.append('action', 'treatment');
       navigator.sendBeacon("/update-policy/", probability);
     }
 
