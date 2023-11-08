@@ -119,7 +119,18 @@ stateDiagram
     Dev --> PolicyLearner
 ```
 
+## Control vs. Treatment
+![control](https://github.com/wirrywoo/cobe-platform/assets/148647848/0839d56a-1c88-4907-b247-ff1c9493cf63)
+![treatment](https://github.com/wirrywoo/cobe-platform/assets/148647848/f52d481f-a11f-4b8d-9e7b-155d0d2a9df6)
 
+## Visualizations
+**Average Reward Performance of Control vs. Treatment Variations**
+
+![simulated_avg_reward](https://github.com/wirrywoo/cobe-platform/assets/148647848/a0b31fdb-e4c9-45d9-b1c5-d2e5298e90fa)
+
+**Updating NGINX Probabilities from CB Learning**
+
+![learned_probabilities_for_me](https://github.com/wirrywoo/cobe-platform/assets/148647848/19f7a297-3d92-4bc4-b490-79c95398f869)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
