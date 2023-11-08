@@ -84,6 +84,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+[![Google Colab Badge](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff&style=for-the-badge)](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing)
+
 Shown below is a high-level diagram that visualizes the technical architecture of the COBE Platform in its current state.
 
 ```mermaid
@@ -117,8 +119,8 @@ stateDiagram
     Dev --> PolicyLearner
 ```
 
-![Google Colab Badge]()
-[![Google Colab Badge][https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff&style=for-the-badge]][https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing]
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
