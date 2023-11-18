@@ -43,7 +43,9 @@
     <br /> -->
     <br />
     <br />
-    <a href="https://github.com/wirrywoo/cobe-platform">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=iHAt1286_4c">View Demo</a>
+    ·
+    <a href="https://devpost.com/software/containerized-online-bandit-experimentation-cobe-platform">View Devpost Submission</a>
     ·
     <a href="https://github.com/wirrywoo/cobe-platform/issues">Report Bug</a>
     ·
@@ -84,7 +86,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Google Colab Badge](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff&style=for-the-badge)](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing)
+The Containerized Online Bandit Experimentation (COBE) Platform is built to monitor the performance of online controlled experiments learned under contextual bandit policies in real-time. The COBE Platform aims to address questions like "What if the variation chosen after a completed A/B Test degrades in performance over time?". Many companies with an experimentation-first culture can highly benefit from utilizing online controlled experiments supported by contextual bandit systems to personalize the user experience by adjusting and optimizing future decisions based on the data collected from each observation.
 
 Shown below is a high-level diagram that visualizes the technical architecture of the COBE Platform in its current state.
 
@@ -118,6 +120,9 @@ stateDiagram
     WandB --> Dev:::actor
     Dev --> PolicyLearner
 ```
+
+[![Google Colab Badge](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff&style=for-the-badge)](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing)
+
 
 ## Control vs. Treatment
 ![control](https://github.com/wirrywoo/cobe-platform/assets/148647848/0839d56a-1c88-4907-b247-ff1c9493cf63)
