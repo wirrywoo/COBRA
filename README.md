@@ -86,7 +86,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The Containerized Online Bandit Experimentation (COBE) Platform is built to monitor the performance of online controlled experiments learned under contextual bandit policies in real-time. The COBE Platform aims to address questions like "What if the variation chosen after a completed A/B Test degrades in performance over time?". Many companies with an experimentation-first culture can highly benefit from utilizing online controlled experiments supported by contextual bandit systems to personalize the user experience by adjusting and optimizing future decisions based on the data collected from each observation.
+The Containerized Online Bandit Experimentation (COBE) Platform is built to monitor the performance of online controlled experiments learned under contextual bandit policies in real-time. The COBE Platform seeks to address the issues that standard A/B Testing is unable to resolve, including the following:
+
+- What if the chosen variation during the rollout phase of the experimentation process degrades in performance over time?
+- Will personalizing the choice of variation for each user successfully optimize the targeted metric?
+- Is there a faster way to identify better performing variations at a lower opportunity cost? 
+ 
+Many companies with an experimentation-first culture can highly benefit from utilizing online controlled experiments to improve their experimentation strategies by adjusting and optimizing future decisions based on the data collected from each observation. For example, [Stitch Fix](https://multithreaded.stitchfix.com/blog/2020/08/05/bandits/) uses multi-armed bandits in their experimentation platform to support the implementation of various bandit policies, allowing Data Scientists to implement their own reward models and plug them into the allocation engine via a dedicated microservice for each bandit experiment. [Spotify](https://research.atspotify.com/publications/explore-exploit-explain-personalizing-explainable-recommendations-with-bandits/) relies on contextual bandits to balance exploration and exploitation in recommendation by learning which content to recommend and how to explain those recommendations to each user in order to improve overall user engagement.
 
 Shown below is a high-level diagram that visualizes the technical architecture of the COBE Platform in its current state.
 
@@ -120,28 +126,6 @@ stateDiagram
     WandB --> Dev:::actor
     Dev --> PolicyLearner
 ```
-
-[![Google Colab Badge](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff&style=for-the-badge)](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing)
-
-
-## Control vs. Treatment
-![control](https://github.com/wirrywoo/cobe-platform/assets/148647848/0839d56a-1c88-4907-b247-ff1c9493cf63)
-![treatment](https://github.com/wirrywoo/cobe-platform/assets/148647848/f52d481f-a11f-4b8d-9e7b-155d0d2a9df6)
-
-## Visualizations
-**Average Reward Performance of Control vs. Treatment Variations**
-
-![simulated_avg_reward](https://github.com/wirrywoo/cobe-platform/assets/148647848/a0b31fdb-e4c9-45d9-b1c5-d2e5298e90fa)
-
-**Updating NGINX Probabilities from CB Learning**
-
-![learned_probabilities_for_me](https://github.com/wirrywoo/cobe-platform/assets/148647848/19f7a297-3d92-4bc4-b490-79c95398f869)
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ### Built With
 
 * [![Python][python-shield]][python-url]
@@ -162,26 +146,46 @@ stateDiagram
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-Create Weights and Biases Account and add API Key in `.env` file
+1. Create and sign into your [Weights and Biases](https://wandb.ai/) account.
+2. Locate the API Key [here](https://wandb.ai/authorize), copy it and add the secret key in the `.env` file under environment variable `WANDB_API_KEY`.
+3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repository to your local environment.
+   
    ```sh
    git clone https://github.com/wirrywoo/cobe-platform.git
    ```
-2. Run in `cobe-platform/`
+2. Go into the `cobe-platform` main directory and build the containers.
+
    ```sh
-   docker compose up -d
+   cd cobe-platform; docker compose up -d
    ```
 3. Go to browser and enter `http://127.0.0.1/cobe-platform-demo/?seed=1` to see control group and `http://127.0.0.1/cobe-platform-demo/?seed=3` to see treatment group.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+[![Google Colab Badge](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff&style=for-the-badge)](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing)
+
+
+## Control vs. Treatment
+![control](https://github.com/wirrywoo/cobe-platform/assets/148647848/0839d56a-1c88-4907-b247-ff1c9493cf63)
+![treatment](https://github.com/wirrywoo/cobe-platform/assets/148647848/f52d481f-a11f-4b8d-9e7b-155d0d2a9df6)
+
+## Visualizations
+**Average Reward Performance of Control vs. Treatment Variations**
+
+![simulated_avg_reward](https://github.com/wirrywoo/cobe-platform/assets/148647848/a0b31fdb-e4c9-45d9-b1c5-d2e5298e90fa)
+
+**Updating NGINX Probabilities from CB Learning**
+
+![learned_probabilities_for_me](https://github.com/wirrywoo/cobe-platform/assets/148647848/19f7a297-3d92-4bc4-b490-79c95398f869)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- USAGE EXAMPLES 
