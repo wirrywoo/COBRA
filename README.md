@@ -43,7 +43,9 @@
     <br /> -->
     <br />
     <br />
-    <a href="https://github.com/wirrywoo/cobe-platform">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=iHAt1286_4c">View Demo</a>
+    ·
+    <a href="https://devpost.com/software/containerized-online-bandit-experimentation-cobe-platform">View Devpost Submission</a>
     ·
     <a href="https://github.com/wirrywoo/cobe-platform/issues">Report Bug</a>
     ·
@@ -84,9 +86,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Google Colab Badge](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff&style=for-the-badge)](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing)
+The Containerized Online Bandit Experimentation (COBE) Platform is built to monitor the performance of online controlled experiments learned under contextual bandit policies in real-time. The COBE Platform seeks to address the issues that standard A/B Testing is unable to resolve, including the following:
 
-Shown below is a high-level diagram that visualizes the technical architecture of the COBE Platform in its current state.
+- What if the chosen variation during the rollout phase of the experimentation process degrades in performance over time?
+- Will personalizing the choice of variation for each user successfully optimize the targeted metric?
+- Is there a faster way to identify better performing variations at a lower opportunity cost? 
+ 
+Many companies with an experimentation-first culture can highly benefit from utilizing online controlled experiments to improve their experimentation strategies by adjusting and optimizing future decisions based on the data collected from each observation. For example, [Stitch Fix](https://multithreaded.stitchfix.com/blog/2020/08/05/bandits/) uses multi-armed bandits in their experimentation platform to support the implementation of various bandit policies, allowing data scientists to implement their own reward models and plug them into the allocation engine via a dedicated microservice for each bandit experiment. 
+
+Inspired by Stitch Fix's case study, we built the COBE Platform using $n$ Docker containers to isolate all variations of the landing page to respect the definition of the experiment, where only the tested variation is changed across different containers. Additionally, a HTTP load balancer container is created to split the population of all users into one of $n$ treatments. Lastly, a policy learner container is built to learn a policy that aims to optimize the targeted metric using an online contextual bandit system. Shown below is a high-level diagram that visualizes the technical architecture of the COBE Platform in its current state for $n = 2$ (one control and one treatment).
 
 ```mermaid
 
@@ -118,25 +126,6 @@ stateDiagram
     WandB --> Dev:::actor
     Dev --> PolicyLearner
 ```
-
-## Control vs. Treatment
-![control](https://github.com/wirrywoo/cobe-platform/assets/148647848/0839d56a-1c88-4907-b247-ff1c9493cf63)
-![treatment](https://github.com/wirrywoo/cobe-platform/assets/148647848/f52d481f-a11f-4b8d-9e7b-155d0d2a9df6)
-
-## Visualizations
-**Average Reward Performance of Control vs. Treatment Variations**
-
-![simulated_avg_reward](https://github.com/wirrywoo/cobe-platform/assets/148647848/a0b31fdb-e4c9-45d9-b1c5-d2e5298e90fa)
-
-**Updating NGINX Probabilities from CB Learning**
-
-![learned_probabilities_for_me](https://github.com/wirrywoo/cobe-platform/assets/148647848/19f7a297-3d92-4bc4-b490-79c95398f869)
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ### Built With
 
 * [![Python][python-shield]][python-url]
@@ -157,26 +146,56 @@ stateDiagram
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-Create Weights and Biases Account and add API Key in `.env` file
+1. Create and sign into your [Weights and Biases](https://wandb.ai/) account.
+2. Locate the API Key [here](https://wandb.ai/authorize), copy it and add the secret key in the `.env` file under environment variable `WANDB_API_KEY`.
+3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
-### Installation
+### Installation and Usage
 
-1. Clone the repo
+1. Clone the repository to your local environment.
+   
    ```sh
    git clone https://github.com/wirrywoo/cobe-platform.git
    ```
-2. Run in `cobe-platform/`
+2. Go into the `cobe-platform` main directory and build the containers.
+
    ```sh
-   docker compose up -d
+   cd cobe-platform; docker compose up -d
    ```
-3. Go to browser and enter `http://127.0.0.1/cobe-platform-demo/?seed=1` to see control group and `http://127.0.0.1/cobe-platform-demo/?seed=3` to see treatment group.
+3. Go to browser and enter `http://127.0.0.1/cobe-platform-demo/?seed=1` to see control group and `http://127.0.0.1/cobe-platform-demo/?seed=3` to see treatment group. Reference <a href="#screenshots">screenshots</a> of control and treatment versions of the landing page.
+
+4. Clicking on the _Sign Me Up!_ button will register `reward = 1` in both the logs of the respective Docker container, and record the reward in a Weights and Biases project named `cobe-platform`. Conversely, navigating away or refreshing the page without clicking on the button will register `reward = 0` in the same locations.
+
+5. To observe contextual bandits in action, reference the following [Google Colab notebook](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing) to simulate the setting when hundreds of users interact with the COBE Platform.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+
+## Screenshots
+<a name="#screenshots"></a>
+Landing Page for Control Group (with Docker Logo):
+![control](https://github.com/wirrywoo/cobe-platform/assets/148647848/0839d56a-1c88-4907-b247-ff1c9493cf63)
+
+Landing Page for Treatment Group (without Docker Logo):
+![treatment](https://github.com/wirrywoo/cobe-platform/assets/148647848/f52d481f-a11f-4b8d-9e7b-155d0d2a9df6)
+
+## Visualizations
+**Average Reward Performance of Control vs. Treatment Variations**
+
+Under an unobserved cost function used to synthetically generate data for simulation purposes in the provided [Google Colab notebook](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing), we observe that the control variant (landing page with Docker logo) outperforms the treatment variant (landing page without Docker logo) over number of observations.
+
+![simulated_avg_reward](https://github.com/wirrywoo/cobe-platform/assets/148647848/a0b31fdb-e4c9-45d9-b1c5-d2e5298e90fa)
+
+**Updating NGINX Probabilities from CB Learning**
+
+For a fixed user, the probabilities of directing that user to one of the landing pages converge as more users interact with both control and treatment versions of the landing page. Using myself as an example in the provided [Google Colab notebook](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing), the policy recommends that the control version of the landing page should be shown to all users similar to me in terms of click activity and technical skills.
+
+![learned_probabilities_for_me](https://github.com/wirrywoo/cobe-platform/assets/148647848/19f7a297-3d92-4bc4-b490-79c95398f869)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- USAGE EXAMPLES 
