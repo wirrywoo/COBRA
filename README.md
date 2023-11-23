@@ -168,7 +168,7 @@ stateDiagram
 
 4. Clicking on the _Sign Me Up!_ button will register `reward = 1` in both the logs of the respective Docker container, and record the reward in a Weights and Biases project named `cobe-platform`. Conversely, navigating away or refreshing the page without clicking on the button will register `reward = 0` in the same locations.
 
-5. To observe contextual bandits in action, reference the following [Google Colab notebook](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing).
+5. To observe contextual bandits in action, reference the following [Google Colab notebook](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing) to simulate the setting when hundreds of users interact with the COBE Platform.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
