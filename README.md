@@ -185,12 +185,15 @@ Landing Page for Treatment Group (without Docker Logo):
 ## Visualizations
 **Average Reward Performance of Control vs. Treatment Variations**
 
+Under an unobserved cost function used to synthetically generate data for simulation purposes in the provided [Google Colab notebook](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing), we observe that the control variant (landing page with Docker logo) outperforms the treatment variant (landing page without Docker logo) over number of observations.
+
 ![simulated_avg_reward](https://github.com/wirrywoo/cobe-platform/assets/148647848/a0b31fdb-e4c9-45d9-b1c5-d2e5298e90fa)
 
 **Updating NGINX Probabilities from CB Learning**
 
-![learned_probabilities_for_me](https://github.com/wirrywoo/cobe-platform/assets/148647848/19f7a297-3d92-4bc4-b490-79c95398f869)
+For a fixed user, the probabilities of directing that user to one of the landing pages converge as more users interact with both control and treatment versions of the landing page. Using myself as an example in the provided [Google Colab notebook](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing), the policy recommends that the control version of the landing page should be shown to all users similar to me in terms of click activity and technical skills.
 
+![learned_probabilities_for_me](https://github.com/wirrywoo/cobe-platform/assets/148647848/19f7a297-3d92-4bc4-b490-79c95398f869)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
