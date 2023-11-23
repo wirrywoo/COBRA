@@ -152,7 +152,7 @@ stateDiagram
 2. Locate the API Key [here](https://wandb.ai/authorize), copy it and add the secret key in the `.env` file under environment variable `WANDB_API_KEY`.
 3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
-### Installation
+### Installation and Usage
 
 1. Clone the repository to your local environment.
    
@@ -164,15 +164,22 @@ stateDiagram
    ```sh
    cd cobe-platform; docker compose up -d
    ```
-3. Go to browser and enter `http://127.0.0.1/cobe-platform-demo/?seed=1` to see control group and `http://127.0.0.1/cobe-platform-demo/?seed=3` to see treatment group.
+3. Go to browser and enter `http://127.0.0.1/cobe-platform-demo/?seed=1` to see control group and `http://127.0.0.1/cobe-platform-demo/?seed=3` to see treatment group. Reference <a href="#screenshots">screenshots</a> of control and treatment versions of the landing page.
+
+4. Clicking on the _Sign Me Up!_ button will register `reward = 1` in both the logs of the respective Docker container, and record the reward in a Weights and Biases project named `cobe-platform`. Conversely, navigating away or refreshing the page without clicking on the button will register `reward = 0` in the same locations.
+
+5. To observe contextual bandits in action, reference the following [Google Colab notebook](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing).
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-[![Google Colab Badge](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff&style=for-the-badge)](https://colab.research.google.com/drive/1ESKuxGevumiloMkdsoOAZQ3vgfsFojaF?usp=sharing)
 
-
-## Control vs. Treatment
+## Screenshots
+<a name="#screenshots"></a>
+Landing Page for Control Group (with Docker Logo):
 ![control](https://github.com/wirrywoo/cobe-platform/assets/148647848/0839d56a-1c88-4907-b247-ff1c9493cf63)
+
+Landing Page for Treatment Group (without Docker Logo):
 ![treatment](https://github.com/wirrywoo/cobe-platform/assets/148647848/f52d481f-a11f-4b8d-9e7b-155d0d2a9df6)
 
 ## Visualizations
